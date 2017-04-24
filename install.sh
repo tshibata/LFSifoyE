@@ -5,12 +5,38 @@ set -e
 
 ./check.sh
 
+# 2.6
 export LFS=/mnt/lfs
 
-source ./init1.sh
-source ./init2.sh
-source ./init3.sh
-source ./init4.sh
+
+# 2.7
+mkdir -pv $LFS
+mount -v -t ext4 /dev/sdb2 $LFS
+mkdir -pv $LFS/boot
+mount -v -t ext2 /dev/sdb1 $LFS/boot
+
+
+# 3.1
+mkdir -v $LFS/sources
+chmod -v a+wt $LFS/sources
+
+source ./download.sh
+
+
+# 4.2
+mkdir -v $LFS/tools
+ln -sv $LFS/tools /
+
+
+# 4.3
+groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+#passwd lfs
+
+chown -v lfs $LFS/tools
+chown -v lfs $LFS/sources
+
+
 
 cp as_a_new_user*.sh /home/lfs
 

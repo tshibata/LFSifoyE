@@ -1,9 +1,6 @@
 
-# sudo ./init2.sh
+set -e
 
-# 3.1
-mkdir -v $LFS/sources
-chmod -v a+wt $LFS/sources
 pushd $LFS/sources
 
 wget http://www.linuxfromscratch.org/lfs/view/stable/wget-list
