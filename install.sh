@@ -56,6 +56,8 @@ chroot "$LFS" /tools/bin/env -i \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
     /tools/bin/bash --login +h /in_a_new_root1.sh
 
+# /etc/passwd and /etc/group are now ready
+
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root \
     TERM="$TERM" \
@@ -63,8 +65,7 @@ chroot "$LFS" /tools/bin/env -i \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
     /tools/bin/bash --login +h /in_a_new_root2.sh
 
-# /tools/bin/bash -> /bin/bash
-#exec /bin/bash --login +h
+# use /bin/bash insread of /tools/bin/bash
 
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root \
@@ -72,15 +73,6 @@ chroot "$LFS" /tools/bin/env -i \
     PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
     /bin/bash --login +h /in_a_new_root3.sh
-
-# go ahead
-
-chroot "$LFS" /tools/bin/env -i \
-    HOME=/root \
-    TERM="$TERM" \
-    PS1='\u:\w\$ ' \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-    /bin/bash --login +h /in_a_new_root4.sh
 
 # /tools/bin/bash again
 # without +h
