@@ -44,8 +44,28 @@ sudo -u lfs env HOME=/home/lfs /bin/bash ./as_a_new_user1.sh
 
 sudo -u lfs env -i HOME=/home/lfs TERM=$TERM PS1='\u:\w\$ ' /bin/bash ./as_a_new_user2.sh
 
-source ./in_a_new_root0.sh
 
+# 5.37
+chown -R root:root $LFS/tools
+
+# 6.2
+mkdir -pv $LFS/{dev,proc,sys,run}
+
+mknod -m 600 $LFS/dev/console c 5 1
+mknod -m 666 $LFS/dev/null c 1 3
+
+mount -v --bind /dev $LFS/dev
+
+mount -vt devpts devpts $LFS/dev/pts -o gid=5,mode=620
+mount -vt proc proc $LFS/proc
+mount -vt sysfs sysfs $LFS/sys
+mount -vt tmpfs tmpfs $LFS/run
+
+if [ -h $LFS/dev/shm ]; then
+  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+fi
+
+# Copy scripts. This is not in original LFS.
 cp in_a_new_root*.sh /mnt/lfs/
 
 # 6.4
