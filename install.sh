@@ -109,10 +109,3 @@ chroot "$LFS" /usr/bin/env -i              \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
     /bin/bash --login /in_a_new_root6.sh
 
-# go ahead
-
-chroot "$LFS" /usr/bin/env -i              \
-    HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
-    /bin/bash --login /in_a_new_root7.sh
-
