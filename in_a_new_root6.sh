@@ -250,7 +250,3 @@ DISTRIB_CODENAME="tshibata@boutem.com"
 DISTRIB_DESCRIPTION="Linux From Scratch"
 EOF
 
-
-# Set password for root
-passwd root
-

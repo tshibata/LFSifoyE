@@ -97,7 +97,7 @@ chroot "$LFS" /tools/bin/env -i \
 # /tools/bin/bash again
 # without +h
 
-chroot $LFS /tools/bin/env -i            \
+chroot "$LFS" /tools/bin/env -i            \
     HOME=/root TERM=$TERM PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin   \
     /tools/bin/bash --login /in_a_new_root5.sh
@@ -108,4 +108,22 @@ chroot "$LFS" /usr/bin/env -i              \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
     /bin/bash --login /in_a_new_root6.sh
+
+# LFS is done.
+# Install extra programs.
+
+wget --directory-prefix=$LFS/sources http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.11.5.tar.xz
+wget --directory-prefix=$LFS/sources https://openssl.org/source/openssl-1.0.2k.tar.gz
+wget --directory-prefix=$LFS/sources http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
+
+chroot "$LFS" /usr/bin/env -i              \
+    HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
+    /bin/bash --login /in_a_new_rootX.sh
+
+# Set password for root
+chroot "$LFS" /usr/bin/env -i              \
+    HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
+    /bin/passwd root
 
