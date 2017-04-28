@@ -100,14 +100,14 @@ chroot "$LFS" /tools/bin/env -i \
 chroot "$LFS" /tools/bin/env -i            \
     HOME=/root TERM=$TERM PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin   \
-    /tools/bin/bash --login /in_a_new_root5.sh
+    /tools/bin/bash --login /in_a_new_root4.sh
 
 # /bin/bash
 
 chroot "$LFS" /usr/bin/env -i              \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
-    /bin/bash --login /in_a_new_root6.sh
+    /bin/bash --login /in_a_new_root5.sh
 
 # LFS is done.
 # Install extra programs.
