@@ -182,10 +182,12 @@ cd linux-4.9.9/
 make mrproper
 
 
-make defconfig
+make i386_defconfig
 
 
-#make menuconfig
+# For frame buffer
+sed -i 's/^# CONFIG_FB_BOOT_VESA_SUPPORT is not set$/CONFIG_FB_BOOT_VESA_SUPPORT=y/' .config
+sed -i 's/^# CONFIG_FB_VESA is not set$/CONFIG_FB_VESA=y/' .config
 
 
 make
@@ -235,9 +237,10 @@ insmod ext2
 set root=(hd0,1)
 
 menuentry "GNU/Linux, Linux 4.9.9-lfs-8.0" {
-        linux   /vmlinuz-4.9.9-lfs-8.0 root=/dev/sda2 ro
+        linux   /vmlinuz-4.9.9-lfs-8.0 root=/dev/sda2 ro vga=771
 }
 EOF
+# vga=771 mesns 800x600 (8bit color)
 
 
 echo 8.0 > /etc/lfs-release

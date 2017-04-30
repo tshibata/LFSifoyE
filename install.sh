@@ -114,6 +114,8 @@ chroot "$LFS" /usr/bin/env -i              \
 
 wget --directory-prefix=$LFS/sources http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.11.5.tar.xz
 wget --directory-prefix=$LFS/sources https://openssl.org/source/openssl-1.0.2k.tar.gz
+wget --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-20170119
+wget --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/certdata.txt
 wget --directory-prefix=$LFS/sources http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
 
 chroot "$LFS" /usr/bin/env -i              \
