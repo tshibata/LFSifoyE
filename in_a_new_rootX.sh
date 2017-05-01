@@ -66,6 +66,14 @@ cp -vfr doc/*     /usr/share/doc/openssl-1.0.2k
 cd ..
 
 
+
+install -vm755 make-ca.sh-20170119 /usr/sbin/make-ca.sh
+
+
+/usr/sbin/make-ca.sh
+
+
+
 xzcat wget-1.19.1.tar.xz | tar x
 cd wget-1.19.1/
 
