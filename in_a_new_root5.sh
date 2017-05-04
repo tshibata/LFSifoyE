@@ -237,10 +237,10 @@ insmod ext2
 set root=(hd0,1)
 
 menuentry "GNU/Linux, Linux 4.9.9-lfs-8.0" {
-        linux   /vmlinuz-4.9.9-lfs-8.0 root=/dev/sda2 ro vga=771
+        set gfxpayload=800x600x24
+        linux /vmlinuz-4.9.9-lfs-8.0 root=/dev/sda2 ro
 }
 EOF
-# vga=771 mesns 800x600 (8bit color)
 
 
 echo 8.0 > /etc/lfs-release
