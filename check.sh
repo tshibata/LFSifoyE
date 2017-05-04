@@ -14,7 +14,6 @@ which g++
 
 # /dev/sdb1 must be ext2 with boot flag.
 parted -m /dev/sdb print | grep '^1:.*:ext2::boot;$'
-# VERY SORRY BUT IT IS NOT USED FOR THE MOMENT.
 
 # /dev/sdb2 must be ext4.
 parted -m /dev/sdb print | grep '^2:.*:ext4::;$'
