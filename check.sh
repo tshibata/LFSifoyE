@@ -7,7 +7,7 @@ set -e
 test `uname -m` = i686
 
 # You must be root user.
-test $UID = 0
+test $(id -u) = 0
 
 # You must have build tools, for example...
 which g++
