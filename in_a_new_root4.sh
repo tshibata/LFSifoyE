@@ -1,13 +1,5 @@
-# su
-# export LFS=/mnt/lfs
 
 # 6.72
-
-#chroot $LFS /tools/bin/env -i            \
-#    HOME=/root TERM=$TERM PS1='\u:\w\$ ' \
-#    PATH=/bin:/usr/bin:/sbin:/usr/sbin   \
-#    /tools/bin/bash --login
-
 
 /tools/bin/find /usr/lib -type f -name \*.a \
    -exec /tools/bin/strip --strip-debug {} ';'

@@ -1,6 +1,3 @@
-# after in_a_new_root2.txt
-
-#exec /bin/bash --login +h
 
 cd /sources/
 
@@ -44,7 +41,6 @@ make
 
 
 ##make check | tee result.txt || echo > FAILED
-# some of them fails
 
 
 make install
@@ -88,7 +84,7 @@ cd gperf-3.0.4/
 make
 
 
-#make -j1 check | tee result.txt || echo > FAILED
+##make -j1 check | tee result.txt || echo > FAILED
 
 
 make install
@@ -272,7 +268,6 @@ make
 
 sed -i "s:./configure:LEXLIB=/usr/lib/libfl.a &:" t/lex-{clean,depend}-cxx.sh
 ##make -j4 check | tee result.txt || echo > FAILED
-# some of them fail
 
 
 make install
@@ -384,7 +379,6 @@ make
 
 sed -i -r 's|(pmap_initname)\\\$|\1|' testsuite/pmap.test/pmap.exp
 ##make check | tee result.txt || echo > FAILED
-# fails
 
 
 make install

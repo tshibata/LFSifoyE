@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# su
-
 set -e
 
 ./check.sh

@@ -1,6 +1,4 @@
 
-# echo $LFS
-
 touch /var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp /var/log/lastlog
 chmod -v 664  /var/log/lastlog
@@ -70,8 +68,6 @@ make
 
 
 ##make check | tee result.txt || echo > FAILED
-#FAIL: posix/tst-getaddrinfo4
-#FAIL: posix/tst-getaddrinfo5
 
 
 touch /etc/ld.so.conf
@@ -163,14 +159,6 @@ cat > /etc/ld.so.conf << "EOF"
 EOF
 
 
-#cat >> /etc/ld.so.conf << "EOF"
-## Add an include directory
-#include /etc/ld.so.conf.d/*.conf
-#
-#EOF
-#mkdir -pv /etc/ld.so.conf.d
-
-
 # 6.10
 
 mv -v /tools/bin/{ld,ld-old}
@@ -185,41 +173,27 @@ gcc -dumpspecs | sed -e 's@/tools@@g' \
     `dirname $(gcc --print-libgcc-file-name)`/specs
 
 
-echo 'int main(){}' > dummy.c
-cc dummy.c -v -Wl,--verbose &> dummy.log
-readelf -l a.out | grep ': /lib' | tee result2.txt
-#      [Requesting program interpreter: /lib/ld-linux.so.2]
-#      [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+## echo 'int main(){}' > dummy.c
+## cc dummy.c -v -Wl,--verbose &> dummy.log
+## readelf -l a.out | grep ': /lib' | tee result2.txt
 
 
-grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log | tee result3.txt
-#/usr/lib/../lib/crt1.o succeeded
-#/usr/lib/../lib/crti.o succeeded
-#/usr/lib/../lib/crtn.o succeeded
+## grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log | tee result3.txt
 
 
-grep -B1 '^ /usr/include' dummy.log | tee result4.txt
-##include <...> search starts here:
-# /usr/include
+## grep -B1 '^ /usr/include' dummy.log | tee result4.txt
 
 
-grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g' | tee result5.txt
-#SEARCH_DIR("=/tools/i686-pc-linux-gnu/lib32")
-#SEARCH_DIR("/usr/lib")
-#SEARCH_DIR("/lib")
-#SEARCH_DIR("=/tools/i686-pc-linux-gnu/lib");
+## grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g' | tee result5.txt
 
 
-grep "/lib.*/libc.so.6 " dummy.log | tee result6.txt
-#attempt to open /lib/libc.so.6 succeeded
+## grep "/lib.*/libc.so.6 " dummy.log | tee result6.txt
 
 
-grep found dummy.log | tee result7.txt
-#found ld-linux.so.2 at /lib/ld-linux.so.2
-#found ld-linux-x86-64.so.2 at /lib/ld-linux-x86-64.so.2
+## grep found dummy.log | tee result7.txt
 
 
-#rm -v dummy.c a.out dummy.log
+## rm -v dummy.c a.out dummy.log
 
 
 cd ../..
@@ -277,8 +251,7 @@ bzcat binutils-2.27.tar.bz2 | tar x
 cd binutils-2.27
 
 
-expect -c "spawn ls" | tee spawn_is.txt
-#spawn ls
+## expect -c "spawn ls" | tee spawn_is.txt
 
 
 mkdir -v build
@@ -298,7 +271,6 @@ make tooldir=/usr
 
 
 ##make -k check | tee result.txt || echo > FAILED
-#make[1]: Target 'check-host' not remade because of errors.
 
 
 make tooldir=/usr install
@@ -431,45 +403,27 @@ ln -sfv /usr/libexec/gcc/$(gcc -dumpmachine)/6.3.0/liblto_plugin.so \
     /usr/lib/bfd-plugins/
 
 
-echo 'int main(){}' > dummy.c
-cc dummy.c -v -Wl,--verbose &> dummy.log
-readelf -l a.out | grep ': /lib' | tee result2.txt
-#      [Requesting program interpreter: /lib/ld-linux.so.2]
+## echo 'int main(){}' > dummy.c
+## cc dummy.c -v -Wl,--verbose &> dummy.log
+## readelf -l a.out | grep ': /lib' | tee result2.txt
 
 
-grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log | tee result3.txt
-#/usr/lib/gcc/i686-pc-linux-gnu/6.3.0/../../../crt1.o succeeded
-#/usr/lib/gcc/i686-pc-linux-gnu/6.3.0/../../../crti.o succeeded
-#/usr/lib/gcc/i686-pc-linux-gnu/6.3.0/../../../crtn.o succeeded
+## grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log | tee result3.txt
 
 
-grep -B4 '^ /usr/include' dummy.log | tee result4.txt
-##include <...> search starts here:
-# /usr/lib/gcc/i686-pc-linux-gnu/6.3.0/include
-# /usr/local/include
-# /usr/lib/gcc/i686-pc-linux-gnu/6.3.0/include-fixed
-# /usr/include
+## grep -B4 '^ /usr/include' dummy.log | tee result4.txt
 
 
-grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g' | tee result5.txt
-#SEARCH_DIR("/usr/i686-pc-linux-gnu/lib32")
-#SEARCH_DIR("/usr/local/lib32")
-#SEARCH_DIR("/lib32")
-#SEARCH_DIR("/usr/lib32")
-#SEARCH_DIR("/usr/i686-pc-linux-gnu/lib")
-#SEARCH_DIR("/usr/local/lib")
-#SEARCH_DIR("/lib")
-#SEARCH_DIR("/usr/lib");
+## grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g' | tee result5.txt
 
 
-grep "/lib.*/libc.so.6 " dummy.log | tee result6.txt
-#attempt to open /lib/libc.so.6 succeeded
+## grep "/lib.*/libc.so.6 " dummy.log | tee result6.txt
 
 
-grep found dummy.log | tee result7.txt
+## grep found dummy.log | tee result7.txt
 
 
-#rm -v dummy.c a.out dummy.log
+## rm -v dummy.c a.out dummy.log
 
 
 mkdir -pv /usr/share/gdb/auto-load/usr/lib
@@ -700,7 +654,6 @@ make html
 
 
 ##make check | tee result.txt || echo FAILED
-# some of the test failed?!
 
 
 make install
@@ -773,10 +726,7 @@ pwconv
 grpconv
 
 
-#sed -i 's/yes/no/' /etc/default/useradd
-
-
-#passwd root
+#passwd root # Not now.
 
 
 cd ..

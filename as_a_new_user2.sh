@@ -257,7 +257,6 @@ cd ..
 
 # 5.16
 zcat bash-4.4.tar.gz | tar x
-#patch -p1 -d bash-4.4/ < bash-4.4-upstream_fixes-1.patch
 mv bash-4.4/ bash-4.4-proto
 cd bash-4.4-proto/
 ./configure --prefix=/tools --without-bash-malloc
@@ -279,7 +278,6 @@ cd ..
 
 # 5.18
 zcat bzip2-1.0.6.tar.gz | tar x
-#patch -p1 -d bzip2-1.0.6 < bzip2-1.0.6-install_docs-1.patch 
 mv bzip2-1.0.6/ bzip2-1.0.6-proto
 cd bzip2-1.0.6-proto/
 make

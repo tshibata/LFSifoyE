@@ -1,14 +1,3 @@
-# su
-# export LFS=/mnt/lfs
-
-# 6.73
-# leftover
-
-#chroot "$LFS" /usr/bin/env -i              \
-#    HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
-#    PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
-#    /bin/bash --login
-
 
 rm -f /usr/lib/lib{bfd,opcodes}.a
 rm -f /usr/lib/libbz2.a

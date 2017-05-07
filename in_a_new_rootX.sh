@@ -14,7 +14,7 @@ make install
 
 cd ..
 
-# This is not the way of LFS.
+# This is not in LFS.
 cat > /etc/init.d/network << "EOF"
 #!/bin/sh
 
