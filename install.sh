@@ -65,7 +65,7 @@ if [ -h $LFS/dev/shm ]; then
 fi
 
 # Copy scripts. This is not in original LFS.
-cp in_a_new_root*.sh /mnt/lfs/
+cp in_a_new_root*.sh /mnt/lfs/sources/
 
 # 6.4
 chroot "$LFS" /tools/bin/env -i \
@@ -73,7 +73,7 @@ chroot "$LFS" /tools/bin/env -i \
     TERM="$TERM" \
     PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-    /tools/bin/bash --login +h /in_a_new_root1.sh
+    /tools/bin/bash --login +h /sources/in_a_new_root1.sh
 
 # /etc/passwd and /etc/group are now ready
 
@@ -82,7 +82,7 @@ chroot "$LFS" /tools/bin/env -i \
     TERM="$TERM" \
     PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-    /tools/bin/bash --login +h /in_a_new_root2.sh
+    /tools/bin/bash --login +h /sources/in_a_new_root2.sh
 
 # use /bin/bash insread of /tools/bin/bash
 
@@ -91,7 +91,7 @@ chroot "$LFS" /tools/bin/env -i \
     TERM="$TERM" \
     PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-    /bin/bash --login +h /in_a_new_root3.sh
+    /bin/bash --login +h /sources/in_a_new_root3.sh
 
 # /tools/bin/bash again
 # without +h
@@ -99,14 +99,14 @@ chroot "$LFS" /tools/bin/env -i \
 chroot "$LFS" /tools/bin/env -i            \
     HOME=/root TERM=$TERM PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin   \
-    /tools/bin/bash --login /in_a_new_root4.sh
+    /tools/bin/bash --login /sources/in_a_new_root4.sh
 
 # /bin/bash
 
 chroot "$LFS" /usr/bin/env -i              \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
-    /bin/bash --login /in_a_new_root5.sh
+    /bin/bash --login /sources/in_a_new_root5.sh
 
 # LFS is done.
 # Install extra programs.
@@ -120,7 +120,7 @@ wget --directory-prefix=$LFS/sources http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar
 chroot "$LFS" /usr/bin/env -i              \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin     \
-    /bin/bash --login /in_a_new_rootX.sh
+    /bin/bash --login /sources/in_a_new_rootX.sh
 
 # Set password for root
 chroot "$LFS" /usr/bin/env -i              \
