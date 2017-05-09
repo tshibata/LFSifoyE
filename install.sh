@@ -111,11 +111,11 @@ chroot "$LFS" /usr/bin/env -i              \
 # LFS is done.
 # Install extra programs.
 
-wget --directory-prefix=$LFS/sources http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.11.5.tar.xz
-wget --directory-prefix=$LFS/sources https://openssl.org/source/openssl-1.0.2k.tar.gz
-wget --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-20170119
-wget --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/certdata.txt
-wget --directory-prefix=$LFS/sources http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
+wget --no-clobber --directory-prefix=$LFS/sources http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.11.5.tar.xz
+wget --no-clobber --directory-prefix=$LFS/sources https://openssl.org/source/openssl-1.0.2k.tar.gz
+wget --no-clobber --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-20170119
+wget --no-clobber --directory-prefix=$LFS/sources http://anduin.linuxfromscratch.org/BLFS/other/certdata.txt
+wget --no-clobber --directory-prefix=$LFS/sources http://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
 
 chroot "$LFS" /usr/bin/env -i              \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \

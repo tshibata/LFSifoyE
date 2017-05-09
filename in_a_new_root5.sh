@@ -179,6 +179,10 @@ sed -i 's/^# CONFIG_FB_BOOT_VESA_SUPPORT is not set$/CONFIG_FB_BOOT_VESA_SUPPORT
 sed -i 's/^# CONFIG_FB_VESA is not set$/CONFIG_FB_VESA=y/' .config
 
 
+# You can overrwite if you want. This is not in LFS.
+if [ -e ../linux.config ]; then cp ../linux.config .config; fi;
+
+
 make
 
 
