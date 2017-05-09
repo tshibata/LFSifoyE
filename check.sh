@@ -10,7 +10,7 @@ test `uname -m` = i686
 test $(id -u) = 0
 
 # You must have build tools, for example...
-which g++
+type g++
 
 # /dev/sdb1 must be ext2 with boot flag.
 parted -m /dev/sdb print | grep '^1:.*:ext2::boot;$'
