@@ -5,8 +5,8 @@ cd $LFS/sources
 
 # 5.4
 bzcat binutils-2.27.tar.bz2 | tar x
-mv binutils-2.27/ binutils-2.27-proto1/
-cd binutils-2.27-proto1/
+mv binutils-2.27/ binutils-2.27-intro1/
+cd binutils-2.27-intro1/
 mkdir -v build
 cd build
 ../configure \
@@ -21,8 +21,8 @@ cd ../..
 
 # 5.5
 bzcat gcc-6.3.0.tar.bz2 | tar x
-mv gcc-6.3.0/ gcc-6.3.0-proto1/
-cd gcc-6.3.0-proto1/
+mv gcc-6.3.0/ gcc-6.3.0-intro1/
+cd gcc-6.3.0-intro1/
 tar -xf ../mpfr-3.1.5.tar.xz
 mv -v mpfr-3.1.5 mpfr
 tar -xf ../gmp-6.1.2.tar.xz
@@ -73,8 +73,8 @@ cd ../..
 
 # 5.6
 xzcat linux-4.9.9.tar.xz | tar x
-mv linux-4.9.9/ linux-4.9.9-proto
-cd linux-4.9.9-proto/
+mv linux-4.9.9/ linux-4.9.9-intro
+cd linux-4.9.9-intro/
 make mrproper
 make INSTALL_HDR_PATH=dest headers_install
 cp -rv dest/include/* /tools/include
@@ -82,8 +82,8 @@ cd ..
 
 # 5.7
 xzcat glibc-2.25.tar.xz | tar x
-mv glibc-2.25/ glibc-2.25-proto
-cd glibc-2.25-proto/
+mv glibc-2.25/ glibc-2.25-intro
+cd glibc-2.25-intro/
 mkdir -v build
 cd build/
 ../configure \
@@ -103,8 +103,8 @@ cd ../..
 
 # 5.8
 bzcat gcc-6.3.0.tar.bz2 | tar x
-mv gcc-6.3.0/ gcc-6.3.0-libstdc++-proto
-cd gcc-6.3.0-libstdc++-proto/
+mv gcc-6.3.0/ gcc-6.3.0-libstdc++-intro
+cd gcc-6.3.0-libstdc++-intro/
 mkdir -v build
 cd build
 ../libstdc++-v3/configure \
@@ -121,8 +121,8 @@ cd ../..
 
 # 5.9
 bzcat binutils-2.27.tar.bz2 | tar x
-mv binutils-2.27/ binutils-2.27-proto2
-cd binutils-2.27-proto2/
+mv binutils-2.27/ binutils-2.27-intro2
+cd binutils-2.27-intro2/
 mkdir -v build
 cd build/
 CC=$LFS_TGT-gcc \
@@ -143,8 +143,8 @@ cd ../..
 
 # 5.10
 bzcat gcc-6.3.0.tar.bz2 | tar x
-mv gcc-6.3.0/ gcc-6.3.0-proto2
-cd gcc-6.3.0-proto2/
+mv gcc-6.3.0/ gcc-6.3.0-intro2
+cd gcc-6.3.0-intro2/
 
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
@@ -194,8 +194,8 @@ cd ../..
 
 # 5.11
 zcat tcl-core8.6.6-src.tar.gz | tar x
-mv tcl8.6.6/ tcl8.6.6-proto
-cd tcl8.6.6-proto/
+mv tcl8.6.6/ tcl8.6.6-intro
+cd tcl8.6.6-intro/
 cd unix/
 ./configure --prefix=/tools
 make
@@ -208,8 +208,8 @@ cd ../..
 
 # 5.12
 zcat expect5.45.tar.gz | tar x
-mv expect5.45/ expect5.45-proto
-cd expect5.45-proto/
+mv expect5.45/ expect5.45-intro
+cd expect5.45-intro/
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 ./configure \
@@ -223,8 +223,8 @@ cd ..
 
 # 5.13
 zcat dejagnu-1.6.tar.gz | tar x
-mv dejagnu-1.6/ dejagnu-1.6-proto
-cd dejagnu-1.6-proto/
+mv dejagnu-1.6/ dejagnu-1.6-intro
+cd dejagnu-1.6-intro/
 ./configure --prefix=/tools
 make install
 ##make check | tee result.txt || echo > FAILED
@@ -232,8 +232,8 @@ cd ..
 
 # 5.14
 zcat check-0.11.0.tar.gz | tar x
-mv check-0.11.0/ check-0.11.0-proto
-cd check-0.11.0-proto/
+mv check-0.11.0/ check-0.11.0-intro
+cd check-0.11.0-intro/
 PKG_CONFIG= ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -242,8 +242,8 @@ cd ..
 
 # 5.15
 zcat ncurses-6.0.tar.gz | tar x
-mv ncurses-6.0/ ncurses-6.0-proto
-cd ncurses-6.0-proto/
+mv ncurses-6.0/ ncurses-6.0-intro
+cd ncurses-6.0-intro/
 sed -i s/mawk// configure
 ./configure --prefix=/tools \
             --with-shared \
@@ -257,8 +257,8 @@ cd ..
 
 # 5.16
 zcat bash-4.4.tar.gz | tar x
-mv bash-4.4/ bash-4.4-proto
-cd bash-4.4-proto/
+mv bash-4.4/ bash-4.4-intro
+cd bash-4.4-intro/
 ./configure --prefix=/tools --without-bash-malloc
 make
 ##make tests | tee results.txt || echo > FAILED
@@ -268,8 +268,8 @@ cd ..
 
 # 5.17
 xzcat bison-3.0.4.tar.xz | tar x
-mv bison-3.0.4/ bison-3.0.4-proto
-cd bison-3.0.4-proto/
+mv bison-3.0.4/ bison-3.0.4-intro
+cd bison-3.0.4-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee results.txt || echo > FAILED
@@ -278,16 +278,16 @@ cd ..
 
 # 5.18
 zcat bzip2-1.0.6.tar.gz | tar x
-mv bzip2-1.0.6/ bzip2-1.0.6-proto
-cd bzip2-1.0.6-proto/
+mv bzip2-1.0.6/ bzip2-1.0.6-intro
+cd bzip2-1.0.6-intro/
 make
 make PREFIX=/tools install
 cd ..
 
 # 5.19
 xzcat coreutils-8.26.tar.xz | tar x
-mv coreutils-8.26/ coreutils-8.26-proto
-cd coreutils-8.26-proto/
+mv coreutils-8.26/ coreutils-8.26-intro
+cd coreutils-8.26-intro/
 ./configure --prefix=/tools --enable-install-program=hostname
 make
 ##make RUN_EXPENSIVE_TESTS=yes check | tee result.txt || echo > FAILED
@@ -296,8 +296,8 @@ cd ..
 
 # 5.20
 xzcat diffutils-3.5.tar.xz | tar x
-mv diffutils-3.5/ diffutils-3.5-proto
-cd diffutils-3.5-proto/
+mv diffutils-3.5/ diffutils-3.5-intro
+cd diffutils-3.5-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -306,8 +306,8 @@ cd ..
 
 # 5.21
 zcat file-5.30.tar.gz | tar x
-mv file-5.30/ file-5.30-proto
-cd file-5.30-proto/
+mv file-5.30/ file-5.30-intro
+cd file-5.30-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -316,8 +316,8 @@ cd ..
 
 # 5.22
 zcat findutils-4.6.0.tar.gz | tar x
-mv findutils-4.6.0/ findutils-4.6.0-proto
-cd findutils-4.6.0-proto/
+mv findutils-4.6.0/ findutils-4.6.0-intro
+cd findutils-4.6.0-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -326,8 +326,8 @@ cd ..
 
 # 5.23
 xzcat gawk-4.1.4.tar.xz | tar x
-mv gawk-4.1.4/ gawk-4.1.4-proto
-cd gawk-4.1.4-proto/
+mv gawk-4.1.4/ gawk-4.1.4-intro
+cd gawk-4.1.4-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -336,8 +336,8 @@ cd ..
 
 # 5.24
 xzcat gettext-0.19.8.1.tar.xz | tar x
-mv gettext-0.19.8.1/ gettext-0.19.8.1-proto
-cd gettext-0.19.8.1-proto/
+mv gettext-0.19.8.1/ gettext-0.19.8.1-intro
+cd gettext-0.19.8.1-intro/
 cd gettext-tools/
 EMACS="no" ./configure --prefix=/tools --disable-shared
 make -C gnulib-lib
@@ -350,8 +350,8 @@ cd ../..
 
 # 5.25
 xzcat grep-3.0.tar.xz | tar x
-mv grep-3.0 grep-3.0-proto
-cd grep-3.0-proto/
+mv grep-3.0 grep-3.0-intro
+cd grep-3.0-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -360,8 +360,8 @@ cd ..
 
 # 5.26
 xzcat gzip-1.8.tar.xz | tar x
-mv gzip-1.8/ gzip-1.8-proto
-cd gzip-1.8-proto/
+mv gzip-1.8/ gzip-1.8-intro
+cd gzip-1.8-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -370,8 +370,8 @@ cd ..
 
 # 5.27
 xzcat m4-1.4.18.tar.xz | tar x
-mv m4-1.4.18/ m4-1.4.18-proto
-cd m4-1.4.18-proto/
+mv m4-1.4.18/ m4-1.4.18-intro
+cd m4-1.4.18-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -380,8 +380,8 @@ cd ..
 
 # 5.28
 bzcat make-4.2.1.tar.bz2 | tar x
-mv make-4.2.1/ make-4.2.1-proto
-cd make-4.2.1-proto/
+mv make-4.2.1/ make-4.2.1-intro
+cd make-4.2.1-intro/
 ./configure --prefix=/tools --without-guile
 make
 ##make check | tee result.txt || echo > FAILED
@@ -390,8 +390,8 @@ cd ..
 
 # 5.29
 xzcat patch-2.7.5.tar.xz | tar x
-mv patch-2.7.5/ patch-2.7.5-proto
-cd patch-2.7.5-proto/
+mv patch-2.7.5/ patch-2.7.5-intro
+cd patch-2.7.5-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -400,8 +400,8 @@ cd ..
 
 # 5.30
 bzcat perl-5.24.1.tar.bz2 | tar x
-mv perl-5.24.1/ perl-5.24.1-proto
-cd perl-5.24.1-proto/
+mv perl-5.24.1/ perl-5.24.1-intro
+cd perl-5.24.1-intro/
 sh Configure -des -Dprefix=/tools -Dlibs=-lm
 make
 cp -v perl cpan/podlators/scripts/pod2man /tools/bin
@@ -411,8 +411,8 @@ cd ..
 
 # 5.31
 xzcat sed-4.4.tar.xz | tar x
-mv sed-4.4/ sed-4.4-proto
-cd sed-4.4-proto/
+mv sed-4.4/ sed-4.4-intro
+cd sed-4.4-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -421,8 +421,8 @@ cd ..
 
 # 5.32
 xzcat tar-1.29.tar.xz | tar x
-mv tar-1.29/ tar-1.29-proto
-cd tar-1.29-proto/
+mv tar-1.29/ tar-1.29-intro
+cd tar-1.29-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -431,8 +431,8 @@ cd ..
 
 # 5.33
 xzcat texinfo-6.3.tar.xz | tar x
-mv texinfo-6.3/ texinfo-6.3-proto
-cd texinfo-6.3-proto/
+mv texinfo-6.3/ texinfo-6.3-intro
+cd texinfo-6.3-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
@@ -441,8 +441,8 @@ cd ..
 
 # 5.34
 xzcat util-linux-2.29.1.tar.xz | tar x
-mv util-linux-2.29.1/ util-linux-2.29.1-proto
-cd util-linux-2.29.1-proto/
+mv util-linux-2.29.1/ util-linux-2.29.1-intro
+cd util-linux-2.29.1-intro/
 ./configure \
     --prefix=/tools \
     --without-python \
@@ -455,8 +455,8 @@ cd ..
 
 # 5.25
 xzcat xz-5.2.3.tar.xz | tar x
-mv xz-5.2.3/ xz-5.2.3-proto
-cd xz-5.2.3-proto/
+mv xz-5.2.3/ xz-5.2.3-intro
+cd xz-5.2.3-intro/
 ./configure --prefix=/tools
 make
 ##make check | tee result.txt || echo > FAILED
