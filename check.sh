@@ -36,6 +36,9 @@ rmdir $TMPDIR
 # /mnt/lfs must not yet exist.
 test ! -e /mnt/lfs
 
+# /tools must not yet exist.
+test ! -e /tools
+
 # User 'lfs' must not yet exist.
 cat /etc/passwd | grep '^lfs:' | diff /dev/null -
 
