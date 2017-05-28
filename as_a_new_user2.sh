@@ -1,4 +1,6 @@
 
+set -e
+
 source ~/.bashrc
 
 cd $LFS/sources
@@ -464,7 +466,7 @@ make install
 cd ..
 
 # 5.36
-strip --strip-debug /tools/lib/*
-/usr/bin/strip --strip-unneeded /tools/{,s}bin/*
+strip --strip-debug /tools/lib/* || echo "Don't mind." # There may be files not to be stripped.
+/usr/bin/strip --strip-unneeded /tools/{,s}bin/* || echo "Don't mind." # There may be files not to be stripped.
 rm -rf /tools/{,share}/{info,man,doc}
 

@@ -1,4 +1,6 @@
 
+set -e
+
 cd /sources
 
 xzcat dhcpcd-6.11.5.tar.xz | tar x

@@ -1,4 +1,6 @@
 
+set -e
+
 touch /var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp /var/log/lastlog
 chmod -v 664  /var/log/lastlog
@@ -298,7 +300,7 @@ make html
 ##make check 2>&1 | tee gmp-check-log || echo > FAILED
 
 
-awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
+##awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
 
 
 make install

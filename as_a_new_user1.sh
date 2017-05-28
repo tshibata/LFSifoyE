@@ -1,4 +1,6 @@
 
+set -e
+
 # 4.4
 
 cat > ~/.bash_profile << "EOF"

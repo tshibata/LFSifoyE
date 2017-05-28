@@ -1,4 +1,6 @@
 
+set -e
+
 cd /sources/
 
 # 6.34
